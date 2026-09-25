@@ -1,0 +1,1040 @@
+<title>Residencia Prana</title>
+<style>
+  :root{
+    --bg:#FBF8FF;
+    --bg-alt:#F2E9FB;
+    --surface:#FFFFFF;
+    --surface-2:#F7F2FC;
+    --ink:#241E42;
+    --ink-soft:#635C82;
+    --navy:#292354;
+    --purple:#CB6CE6;
+    --purple-strong:#8B3FB3;
+    --purple-wash:#F4E4FB;
+    --yellow:#FFDE59;
+    --yellow-ink:#5A4400;
+    --line:rgba(41,35,84,0.13);
+    --shadow:0 18px 40px -20px rgba(41,35,84,0.35);
+    --radius-lg:28px;
+    --radius-md:18px;
+    --radius-sm:12px;
+    --font-display:'Children One','Baloo 2',system-ui,sans-serif;
+    --font-sub:'Poppins',system-ui,-apple-system,sans-serif;
+    --font-body:'Work Sans',system-ui,-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1A1530;
+      --bg-alt:#221A3E;
+      --surface:#231C42;
+      --surface-2:#2A2250;
+      --ink:#F4EFFC;
+      --ink-soft:#C7BEE3;
+      --navy:#15112A;
+      --purple:#D98CF0;
+      --purple-strong:#E6ACF5;
+      --purple-wash:#332757;
+      --yellow:#FFDE59;
+      --yellow-ink:#4A3800;
+      --line:rgba(244,239,252,0.14);
+      --shadow:0 18px 40px -20px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1A1530;
+    --bg-alt:#221A3E;
+    --surface:#231C42;
+    --surface-2:#2A2250;
+    --ink:#F4EFFC;
+    --ink-soft:#C7BEE3;
+    --navy:#15112A;
+    --purple:#D98CF0;
+    --purple-strong:#E6ACF5;
+    --purple-wash:#332757;
+    --yellow:#FFDE59;
+    --yellow-ink:#4A3800;
+    --line:rgba(244,239,252,0.14);
+    --shadow:0 18px 40px -20px rgba(0,0,0,0.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  body, .wrap{padding-left:0;padding-right:0;}
+  img{display:block;}
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;color:var(--navy);text-wrap:balance;margin:0;}
+  :root[data-theme="dark"] h1, :root[data-theme="dark"] h2, :root[data-theme="dark"] h3{color:var(--ink);}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) h1, :root:not([data-theme="light"]) h2, :root:not([data-theme="light"]) h3{color:var(--ink);}
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:24px;}
+  @media (max-width:640px){ .wrap{padding-inline:18px;} }
+
+  .eyebrow{
+    font-family:var(--font-sub);
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--purple-strong);
+  }
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;
+    top:env(safe-area-inset-top,0px);
+    z-index:50;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-block:14px;
+    gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;color:var(--navy);}
+  :root[data-theme="dark"] .brand, .brand{color:var(--navy);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .brand{color:var(--ink);} }
+  :root[data-theme="dark"] .brand{color:var(--ink);}
+  .brand-mark{width:34px;height:34px;flex:none;}
+  nav.links{display:flex;gap:26px;align-items:center;}
+  nav.links a{
+    font-family:var(--font-sub);font-size:14px;font-weight:500;color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  nav.links a:hover{color:var(--purple-strong);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:var(--font-sub);font-weight:600;font-size:14.5px;
+    padding:12px 22px;border-radius:999px;border:1px solid transparent;
+    cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn:focus-visible{outline:3px solid var(--purple);outline-offset:2px;}
+  .btn-primary{background:var(--navy);color:#fff;}
+  :root[data-theme="dark"] .btn-primary{background:var(--purple);color:var(--navy);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .btn-primary{background:var(--purple);color:var(--navy);} }
+  .btn-primary:hover{box-shadow:var(--shadow);}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--line);}
+  :root[data-theme="dark"] .btn-ghost{color:var(--ink);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .btn-ghost{color:var(--ink);} }
+  .btn-ghost:hover{border-color:var(--purple);}
+  .btn-wa{background:var(--yellow);color:var(--yellow-ink);}
+  .btn-wa:hover{box-shadow:var(--shadow);}
+  .btn-wa svg{width:17px;height:17px;}
+  .nav-toggle{display:none;}
+  .menu-btn{
+    display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);
+    background:var(--surface);align-items:center;justify-content:center;flex:none;cursor:pointer;
+  }
+  .menu-btn svg{width:20px;height:20px;}
+
+  @media (max-width:900px){
+    nav.links{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:var(--surface);border-bottom:1px solid var(--line);
+      padding:6px 24px 18px;
+      display:none;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:12px 0;border-bottom:1px solid var(--line);}
+    nav.links .btn{margin-top:10px;width:100%;}
+    .menu-btn{display:flex;}
+    .nav-desktop-cta{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding-block:56px 64px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:40px;} }
+
+  .stat-chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .chip{
+    font-family:var(--font-sub);font-size:13px;font-weight:600;
+    background:var(--purple-wash);color:var(--purple-strong);
+    padding:7px 14px;border-radius:999px;
+  }
+
+  .hero h1{font-size:clamp(2.4rem,5.6vw,3.7rem);line-height:1.06;margin-top:14px;}
+  .hero h1 em{font-style:normal;color:var(--purple);}
+  .hero p.lead{
+    font-family:var(--font-sub);font-size:17px;color:var(--ink-soft);
+    max-width:46ch;margin-top:18px;
+  }
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
+
+  .stats-strip{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    margin-top:38px;border-top:1px solid var(--line);padding-top:26px;
+  }
+  .stats-strip div + div{border-left:1px solid var(--line);padding-left:20px;}
+  .stat-num{font-family:var(--font-display);font-size:clamp(1.7rem,3vw,2.3rem);color:var(--navy);}
+  :root[data-theme="dark"] .stat-num{color:var(--ink);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .stat-num{color:var(--ink);} }
+  .stat-label{font-family:var(--font-sub);font-size:12.5px;color:var(--ink-soft);margin-top:4px;}
+  @media (max-width:540px){ .stats-strip div + div{padding-left:14px;} .stat-label{font-size:11px;} }
+
+  .hero-photo-wrap{position:relative;}
+  .hero-photo{
+    width:100%;aspect-ratio:4/5;border-radius:var(--radius-lg);overflow:hidden;
+    box-shadow:var(--shadow);position:relative;background:var(--navy);
+  }
+  .hero-photo img{
+    width:100%;height:100%;object-fit:cover;object-position:22% 32%;
+    filter:brightness(1.14) contrast(1.08) saturate(1.18);
+  }
+  .hero-photo::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(185deg, rgba(41,35,84,0) 55%, rgba(20,16,42,.55) 100%);
+    pointer-events:none;
+  }
+  .hero-pin{
+    position:absolute;left:20px;bottom:20px;z-index:2;
+    background:rgba(255,255,255,.95);color:var(--navy);
+    font-family:var(--font-sub);font-weight:600;font-size:13px;
+    padding:10px 14px;border-radius:14px;display:flex;align-items:center;gap:8px;
+    box-shadow:0 10px 24px -10px rgba(0,0,0,.4);
+  }
+  .hero-pin svg{width:16px;height:16px;flex:none;color:var(--purple-strong);}
+  .hero-badge{
+    position:absolute;top:-16px;right:-14px;z-index:3;
+    background:var(--yellow);color:var(--yellow-ink);
+    font-family:var(--font-display);font-size:14.5px;
+    width:96px;height:96px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.15;
+    transform:rotate(9deg);box-shadow:0 14px 28px -14px rgba(0,0,0,.45);
+    padding:8px;
+  }
+  @media (max-width:640px){ .hero-badge{width:80px;height:80px;font-size:12px;right:0;} }
+
+  /* ---------- Section shells ---------- */
+  section{padding-block:64px;}
+  .section-alt{background:var(--bg-alt);}
+  .section-navy{background:var(--navy);color:#EDE7FA;}
+  .section-navy .eyebrow{color:var(--yellow);}
+  .section-navy h2{color:#fff;}
+  .head-row{max-width:640px;margin-bottom:38px;}
+  .head-row h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-top:10px;}
+  .head-row p{font-family:var(--font-sub);color:var(--ink-soft);margin-top:12px;font-size:15.5px;}
+  .section-navy .head-row p{color:#C9BFE6;}
+  .head-row.center{margin-inline:auto;text-align:center;}
+
+  /* ---------- Video ---------- */
+  .video-shell{
+    max-width:900px;margin:0 auto;border-radius:var(--radius-lg);overflow:hidden;
+    box-shadow:0 30px 60px -24px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.08);
+  }
+  video{width:100%;display:block;background:#000;max-height:70vh;}
+
+  /* ---------- Nosotros ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .about-copy p{font-family:var(--font-sub);color:var(--ink-soft);font-size:15.5px;margin-top:16px;}
+  .about-copy p:first-of-type{margin-top:16px;}
+  .fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;}
+  .fact{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+    padding:18px;display:flex;gap:12px;align-items:flex-start;
+  }
+  .fact svg{width:22px;height:22px;flex:none;color:var(--purple-strong);margin-top:2px;}
+  .fact strong{display:block;font-family:var(--font-sub);font-size:14px;color:var(--navy);}
+  :root[data-theme="dark"] .fact strong{color:var(--ink);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .fact strong{color:var(--ink);} }
+  .fact span{font-size:13.5px;color:var(--ink-soft);}
+
+  .floors-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:28px;box-shadow:var(--shadow);
+  }
+  .floors-card h3{font-size:1.3rem;}
+  .floors-card > p{font-family:var(--font-sub);color:var(--ink-soft);font-size:14.5px;margin-top:8px;}
+  .floor-stack{display:flex;flex-direction:column-reverse;gap:6px;margin-top:22px;}
+  .floor-row{
+    display:flex;align-items:center;gap:12px;background:var(--surface-2);
+    border-radius:10px;padding:9px 14px;font-family:var(--font-sub);font-size:13px;color:var(--ink-soft);
+  }
+  .floor-row b{color:var(--navy);font-size:12.5px;width:66px;flex:none;}
+  :root[data-theme="dark"] .floor-row b{color:var(--ink);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .floor-row b{color:var(--ink);} }
+  .floor-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);flex:none;}
+
+  /* ---------- Rooms ---------- */
+  .room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:900px){ .room-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .room-grid{grid-template-columns:1fr;} }
+  .room-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+    overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);
+  }
+  .room-media{aspect-ratio:4/3;width:100%;background:var(--purple-wash);position:relative;overflow:hidden;}
+  .room-media img{width:100%;height:100%;object-fit:cover;filter:brightness(1.05) saturate(1.05);}
+  .room-media.icon{display:flex;align-items:center;justify-content:center;}
+  .room-media.icon svg{width:64%;height:64%;color:var(--purple-strong);}
+  .room-tag{
+    position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--navy);
+    font-family:var(--font-sub);font-weight:600;font-size:11.5px;padding:5px 10px;border-radius:999px;
+  }
+  .room-body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .room-body h3{font-size:1.25rem;}
+  .room-feats{display:flex;flex-direction:column;gap:7px;}
+  .room-feats li{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:var(--ink-soft);font-family:var(--font-sub);}
+  .room-feats svg{width:15px;height:15px;flex:none;margin-top:2px;color:var(--purple-strong);}
+  .room-price{
+    margin-top:auto;padding-top:12px;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .room-price span{font-family:var(--font-sub);font-size:12.5px;color:var(--ink-soft);}
+  .room-price a{font-family:var(--font-sub);font-weight:600;font-size:13px;color:var(--purple-strong);}
+  .room-note{
+    margin-top:26px;background:var(--purple-wash);border-radius:var(--radius-md);
+    padding:18px 22px;font-family:var(--font-sub);font-size:13.5px;color:var(--purple-strong);
+    display:flex;gap:10px;align-items:flex-start;
+  }
+  .room-note svg{width:18px;height:18px;flex:none;margin-top:1px;}
+
+  /* ---------- Common spaces ---------- */
+  .spaces-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+    grid-auto-rows:150px;
+  }
+  @media (max-width:900px){ .spaces-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px;} }
+  @media (max-width:540px){ .spaces-grid{grid-template-columns:1fr;grid-auto-rows:190px;} }
+  .space-card{
+    position:relative;border-radius:var(--radius-md);overflow:hidden;
+    grid-column:span 2;grid-row:span 2;
+  }
+  .space-card.small{grid-column:span 2;grid-row:span 1;}
+  @media (max-width:540px){ .space-card, .space-card.small{grid-column:span 1;grid-row:span 1;} }
+  .space-card img{width:100%;height:100%;object-fit:cover;filter:brightness(1.06) saturate(1.08);}
+  .space-card .overlay{
+    position:absolute;inset:0;background:linear-gradient(0deg, rgba(21,17,42,.82) 0%, rgba(21,17,42,.08) 55%);
+  }
+  .space-card .label{
+    position:absolute;left:16px;bottom:14px;right:16px;color:#fff;font-family:var(--font-sub);
+  }
+  .space-card .label b{display:block;font-family:var(--font-display);font-size:1.2rem;font-weight:400;}
+  .space-card .label span{font-size:12.5px;color:#DCD3F2;}
+  .space-card.icon-card{
+    background:var(--surface);border:1px solid var(--line);
+    display:flex;flex-direction:column;justify-content:center;padding:18px;gap:8px;
+  }
+  .space-card.icon-card svg{width:26px;height:26px;color:var(--purple-strong);}
+  .space-card.icon-card b{font-family:var(--font-display);font-size:1.15rem;color:var(--navy);font-weight:400;}
+  :root[data-theme="dark"] .space-card.icon-card b{color:var(--ink);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .space-card.icon-card b{color:var(--ink);} }
+  .space-card.icon-card span{font-family:var(--font-sub);font-size:12.5px;color:var(--ink-soft);}
+
+  /* ---------- Services ---------- */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media (max-width:760px){ .services-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:480px){ .services-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+    padding:20px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .service-card .ic{
+    width:44px;height:44px;border-radius:12px;background:var(--purple-wash);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .service-card svg{width:22px;height:22px;color:var(--purple-strong);}
+  .service-card b{display:block;font-family:var(--font-sub);font-size:14.5px;color:var(--navy);}
+  :root[data-theme="dark"] .service-card b{color:var(--ink);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .service-card b{color:var(--ink);} }
+  .service-card span{font-size:13px;color:var(--ink-soft);font-family:var(--font-sub);}
+  .expensas-note{
+    margin-top:24px;font-family:var(--font-sub);font-size:13.5px;color:var(--ink-soft);
+    max-width:70ch;
+  }
+
+  /* ---------- Ingreso steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step;}
+  @media (max-width:860px){ .steps{grid-template-columns:1fr;} }
+  .step{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius-md);padding:24px;position:relative;
+  }
+  .step-num{
+    font-family:var(--font-display);font-size:2.1rem;color:var(--yellow);line-height:1;
+  }
+  .step h3{color:#fff;font-size:1.15rem;margin-top:10px;}
+  .step p{font-family:var(--font-sub);font-size:13.5px;color:#C9BFE6;margin-top:8px;}
+  .req-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+  .req-chip{
+    font-family:var(--font-sub);font-size:13px;font-weight:600;color:#1B1730;
+    background:var(--yellow);padding:8px 16px;border-radius:999px;
+  }
+
+  /* ---------- Convivencia ---------- */
+  .convivencia{
+    display:flex;gap:26px;align-items:center;background:var(--surface);
+    border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow);
+  }
+  @media (max-width:700px){ .convivencia{flex-direction:column;align-items:flex-start;} }
+  .convivencia .ic{
+    width:60px;height:60px;border-radius:16px;background:var(--purple-wash);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .convivencia .ic svg{width:30px;height:30px;color:var(--purple-strong);}
+  .convivencia h3{font-size:1.3rem;}
+  .convivencia p{font-family:var(--font-sub);color:var(--ink-soft);font-size:14.5px;margin-top:8px;max-width:62ch;}
+
+  /* ---------- Location ---------- */
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
+  @media (max-width:860px){ .loc-grid{grid-template-columns:1fr;} }
+  .loc-list{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+  .loc-item{display:flex;gap:14px;align-items:flex-start;}
+  .loc-item svg{width:22px;height:22px;flex:none;color:var(--purple-strong);margin-top:2px;}
+  .loc-item b{display:block;font-family:var(--font-sub);font-size:14.5px;color:var(--navy);}
+  :root[data-theme="dark"] .loc-item b{color:var(--ink);}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .loc-item b{color:var(--ink);} }
+  .loc-item span{font-size:13.5px;color:var(--ink-soft);font-family:var(--font-sub);}
+  .map-card{
+    background:var(--navy);border-radius:var(--radius-lg);padding:34px;position:relative;overflow:hidden;
+    aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);
+  }
+  .map-card svg{width:100%;height:100%;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-side h3{font-size:1.4rem;margin-top:10px;}
+  .contact-side p{font-family:var(--font-sub);color:var(--ink-soft);font-size:14.5px;margin-top:12px;max-width:46ch;}
+  .contact-links{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+  .contact-link{
+    display:flex;align-items:center;gap:12px;font-family:var(--font-sub);font-size:14.5px;font-weight:500;
+    padding:14px 16px;border-radius:14px;background:var(--surface);border:1px solid var(--line);
+  }
+  .contact-link:hover{border-color:var(--purple);}
+  .contact-link svg{width:20px;height:20px;color:var(--purple-strong);flex:none;}
+
+  form.card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:30px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field label{font-family:var(--font-sub);font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+  .field input, .field select, .field textarea{
+    font-family:var(--font-body);font-size:15px;color:var(--ink);
+    background:var(--surface-2);border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;width:100%;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--purple);border-color:transparent;}
+  .field textarea{resize:vertical;min-height:90px;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:480px){ .two-col{grid-template-columns:1fr;} }
+  .form-cta{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    background:var(--yellow);color:var(--yellow-ink);font-family:var(--font-sub);font-weight:700;
+    padding:15px 20px;border-radius:14px;font-size:15px;margin-top:4px;
+  }
+  .form-cta:hover{box-shadow:var(--shadow);}
+  .form-cta svg{width:19px;height:19px;}
+  .form-hint{font-family:var(--font-sub);font-size:12px;color:var(--ink-soft);text-align:center;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy);color:#C9BFE6;padding-block:48px 32px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px;}
+  @media (max-width:760px){ .foot-grid{grid-template-columns:1fr;gap:28px;} }
+  .foot-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:20px;color:#fff;}
+  footer p{font-family:var(--font-sub);font-size:13.5px;margin-top:12px;max-width:38ch;}
+  footer h4{font-family:var(--font-sub);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:14px;}
+  footer ul{display:flex;flex-direction:column;gap:10px;}
+  footer a{font-family:var(--font-sub);font-size:13.5px;}
+  footer a:hover{color:#fff;}
+  .foot-bottom{
+    margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:var(--font-sub);font-size:12px;color:#9E93C2;
+  }
+
+  #wa-float{
+    position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;
+    width:56px;height:56px;border-radius:50%;background:var(--yellow);color:var(--yellow-ink);
+    display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);
+  }
+  #wa-float svg{width:26px;height:26px;}
+
+  @media (prefers-reduced-motion: no-preference){
+    .btn, .contact-link, .room-card{transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;}
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Children+One&family=Poppins:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap">
+
+<header class="site">
+  <div class="wrap nav-row" style="position:relative;">
+    <a class="brand" href="#top" aria-label="Residencia Prana - inicio">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="var(--purple)"/>
+        <path d="M13 27C13 19 16 13 20 13C24 13 27 19 27 27" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M20 13C17.5 16 17.5 20 20 23C22.5 20 22.5 16 20 13Z" fill="var(--yellow)"/>
+      </svg>
+      prana
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#video">Prana por dentro</a>
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="#espacios">Espacios comunes</a>
+      <a href="#ingreso">Cómo ingresar</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto" class="btn btn-primary">Reservá tu lugar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Residencia universitaria · Córdoba Capital</span>
+        <h1>Tu segunda casa mientras hacés <em>tu carrera</em> en Córdoba</h1>
+        <p class="lead">Somos Prana: una residencia mixta a metros de Plaza Colón, con habitaciones con baño propio y espacios comunes pensados para estudiar y para hacer amigos. En estos 4 años ya pasaron por Prana más de 200 estudiantes de todo el país, Latinoamérica y Europa.</p>
+        <div class="stat-chip-row">
+          <span class="chip">4 años acompañando estudiantes</span>
+          <span class="chip">Contrato anual</span>
+          <span class="chip">18 a 25 años</span>
+        </div>
+        <div class="cta-row">
+          <a href="#contacto" class="btn btn-primary">Reservá tu lugar</a>
+          <a id="wa-hero" href="#" target="_blank" rel="noopener" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div class="stats-strip">
+          <div><div class="stat-num">4</div><div class="stat-label">Años en el rubro</div></div>
+          <div><div class="stat-num">+200</div><div class="stat-label">Estudiantes ya pasaron por Prana</div></div>
+          <div><div class="stat-num">PB+5</div><div class="stat-label">Pisos con ascensor</div></div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-badge">Santa Rosa 812</div>
+        <div class="hero-photo">
+          <img src="assets/hero-building.jpg" alt="Fachada del edificio de Residencia Prana en Santa Rosa 812, Córdoba">
+          <div class="hero-pin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            A 50 m de Plaza Colón
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="section-navy" id="video">
+    <div class="wrap">
+      <div class="head-row center" style="margin-inline:auto;">
+        <span class="eyebrow">Mirá la residencia</span>
+        <h2>Conocé Prana por dentro</h2>
+        <p>Un recorrido real por las habitaciones y los espacios comunes, filmado en el edificio de Santa Rosa 812.</p>
+      </div>
+      <div class="video-shell">
+        <video controls preload="metadata" poster="assets/lounge.jpg">
+          <source src="assets/residencia-video.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow">Quiénes somos</span>
+        <h2>Cuatro años construyendo una comunidad universitaria</h2>
+        <p>Prana nació para que venir a estudiar a Córdoba no signifique empezar de cero: en estos 4 años ya pasaron por Prana más de 200 estudiantes de todas las provincias del país, de Latinoamérica y de Europa, con contrato anual y todo pensado para que rindas en la facultad sin descuidar tu vida diaria.</p>
+        <p>La residencia es mixta, distribuida en planta baja y 5 pisos con ascensor. Cada piso está sectorizado: hay pisos exclusivos para varones y pisos exclusivos para mujeres, así que convivís con tu grupo de piso mientras compartís los espacios comunes con el resto de la residencia. Pensada para estudiantes de 18 a 25 años.</p>
+        <div class="fact-grid">
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+            <div><strong>Planta baja + 5 pisos</strong><span>Con ascensor, pisos solo de varones o solo de mujeres</span></div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <div><strong>18 a 25 años</strong><span>Comunidad de pares en el mismo momento de vida</span></div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v-1M16 4v-1"/></svg>
+            <div><strong>Contrato anual</strong><span>Firmado ante escribano, precio se actualiza cada 3 meses</span></div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            <div><strong>Santa Rosa 812</strong><span>A 50 m de Plaza Colón, a 100 m del colectivo a Ciudad Universitaria</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="floors-card">
+        <span class="eyebrow">De dónde son nuestros estudiantes</span>
+        <h3 style="margin-top:8px;">Todo el país, Latinoamérica y Europa</h3>
+        <p>Estudiantes de más de una decena de provincias argentinas conviven con compañeros llegados de otros países de Latinoamérica y de Europa: una residencia pensada para que hacer amigos sea parte de mudarte a Córdoba.</p>
+        <div class="floor-stack" aria-hidden="true">
+          <div class="floor-row"><b>Piso 5</b><span class="floor-dot"></span> Sector exclusivo</div>
+          <div class="floor-row"><b>Piso 4</b><span class="floor-dot"></span> Sector exclusivo</div>
+          <div class="floor-row"><b>Piso 3</b><span class="floor-dot"></span> Sector exclusivo</div>
+          <div class="floor-row"><b>Piso 2</b><span class="floor-dot"></span> Sector exclusivo</div>
+          <div class="floor-row"><b>Piso 1</b><span class="floor-dot"></span> Sector exclusivo</div>
+          <div class="floor-row"><b>Planta baja</b><span class="floor-dot"></span> Espacios comunes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABITACIONES -->
+  <section class="section-alt" id="habitaciones">
+    <div class="wrap">
+      <div class="head-row">
+        <span class="eyebrow">Habitaciones</span>
+        <h2>Un lugar a tu medida, cinco formas de elegirlo</h2>
+        <p>Todas las habitaciones tienen baño propio, cama con colchón y un estante para guardar tu ropa. Las duchas se comparten por piso. Cada ingresante trae su ropa blanca, plato, vaso y cubiertos.</p>
+      </div>
+
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-media"><span class="room-tag">Hasta 3 personas</span><img src="assets/room-triple.jpg" alt="Habitación triple de Residencia Prana con cucheta y cama individual"></div>
+          <div class="room-body">
+            <h3>Triple</h3>
+            <ul class="room-feats">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Duchas compartidas por piso</li>
+            </ul>
+            <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="room-media"><span class="room-tag">Hasta 2 personas</span><img src="assets/room-doble.jpg" alt="Habitación doble de Residencia Prana con cucheta y placard"></div>
+          <div class="room-body">
+            <h3>Doble</h3>
+            <ul class="room-feats">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Duchas compartidas por piso</li>
+            </ul>
+            <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="room-media icon">
+            <span class="room-tag">Individual</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="12" width="20" height="7" rx="1.4"/><path d="M4 12V9a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v3"/><path d="M2 19v2M22 19v2"/></svg>
+          </div>
+          <div class="room-body">
+            <h3>Individual grande</h3>
+            <ul class="room-feats">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>El mayor espacio individual</li>
+            </ul>
+            <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="room-media icon">
+            <span class="room-tag">Individual</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="12" width="16" height="7" rx="1.4"/><path d="M6 12V9.5a1.8 1.8 0 0 1 1.8-1.8h4.4A1.8 1.8 0 0 1 14 9.5V12"/><path d="M4 19v2M20 19v2"/></svg>
+          </div>
+          <div class="room-body">
+            <h3>Individual mediana</h3>
+            <ul class="room-feats">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Equilibrio entre espacio y valor</li>
+            </ul>
+            <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <div class="room-media icon">
+            <span class="room-tag">Individual</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="6" y="12" width="12" height="7" rx="1.2"/><path d="M8 12v-2a1.6 1.6 0 0 1 1.6-1.6h2.8A1.6 1.6 0 0 1 14 10v2"/><path d="M6 19v2M18 19v2"/></svg>
+          </div>
+          <div class="room-body">
+            <h3>Individual chica</h3>
+            <ul class="room-feats">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Tu propio espacio, con lo esencial</li>
+            </ul>
+            <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
+          </div>
+        </div>
+
+        <div class="room-card" style="background:var(--purple-wash);border-style:dashed;align-items:center;justify-content:center;text-align:center;padding:24px;">
+          <div class="room-body" style="align-items:center;text-align:center;justify-content:center;height:100%;">
+            <h3 style="color:var(--purple-strong);">¿No sabés cuál elegir?</h3>
+            <p style="font-family:var(--font-sub);font-size:13.5px;color:var(--ink-soft);">Contanos tu presupuesto y con quién querés convivir, y te recomendamos la habitación ideal.</p>
+            <a href="#contacto" class="btn btn-primary" style="margin-top:6px;">Hablar con Prana</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="room-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+        Los precios de habitaciones y expensas se actualizan cada 3 meses según el índice de IPC. Escribinos para conocer los valores vigentes y la disponibilidad.
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPACIOS COMUNES -->
+  <section id="espacios">
+    <div class="wrap">
+      <div class="head-row">
+        <span class="eyebrow">Espacios comunes</span>
+        <h2>Más que una habitación: una residencia para vivirla</h2>
+        <p>Cuatro cocinas totalmente equipadas, comedores, salas de estar, sala de estudio, terraza y lavandería, para que la vida en Prana no pase solo por tu cuarto.</p>
+      </div>
+
+      <div class="spaces-grid">
+        <div class="space-card">
+          <img src="assets/kitchen.jpg" alt="Una de las cocinas equipadas de Residencia Prana">
+          <div class="overlay"></div>
+          <div class="label"><b>4 cocinas equipadas</b><span>Con 3 comedores para compartir cada comida</span></div>
+        </div>
+        <div class="space-card">
+          <img src="assets/lounge.jpg" alt="Sala de estar de Residencia Prana con sillones y TV">
+          <div class="overlay"></div>
+          <div class="label"><b>2 salas de estar</b><span>Para mirar una serie o desconectar entre clases</span></div>
+        </div>
+        <div class="space-card small icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M6 19V9l6-5 6 5v10M10 19v-5h4v5"/></svg>
+          <b>Sala de estudio</b>
+          <span>Un espacio dedicado, lejos del ruido de las habitaciones</span>
+        </div>
+        <div class="space-card small icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V11l8-6 8 6v10M4 21h16M9 21v-6h6v6"/><path d="M8 3v2M16 3v2"/></svg>
+          <b>Terraza</b>
+          <span>Aire libre en pleno centro de Córdoba</span>
+        </div>
+        <div class="space-card small icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6.5h.01M11 6.5h.01"/></svg>
+          <b>2 sectores de lavandería</b>
+          <span>Los insumos de lavado corren por cuenta de cada estudiante</span>
+        </div>
+        <div class="space-card small icon-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v12H4zM8 20h8M12 16v4"/></svg>
+          <b>3 comedores</b>
+          <span>Repartidos junto a las cocinas de cada sector</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS / EXPENSAS -->
+  <section class="section-alt" id="servicios">
+    <div class="wrap">
+      <div class="head-row">
+        <span class="eyebrow">Expensas</span>
+        <h2>Lo que incluyen tus expensas</h2>
+        <p>Además del valor mensual de tu habitación, las expensas cubren todo esto:</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.5a11 11 0 0 1 14 0M8 16a6.5 6.5 0 0 1 8 0M11.5 19.5h1"/></svg></div>
+          <div><b>Wifi</b><span>Internet en habitaciones y espacios comunes</span></div>
+        </div>
+        <div class="service-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/></svg></div>
+          <div><b>Agua</b><span>Consumo incluido, sin sorpresas</span></div>
+        </div>
+        <div class="service-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <div><b>Luz</b><span>Consumo eléctrico incluido</span></div>
+        </div>
+        <div class="service-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9-9.3C1.4 7.7 3.8 4 7.5 4c2 0 3.6 1.2 4.5 2.7C12.9 5.2 14.5 4 16.5 4 20.2 4 22.6 7.7 21 11.7 19 16.65 12 21 12 21z"/></svg></div>
+          <div><b>Seguro médico</b><span>Cobertura durante tu estadía</span></div>
+        </div>
+        <div class="service-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4l-6 6 1.7 1.7 1.4-1.4 1.4 1.4 1.4-1.4-1.4-1.4 1.5-1.5a4 4 0 0 1 5.4-5.4l3-3-1.7-1.7z"/></svg></div>
+          <div><b>Mantenimiento</b><span>Reparaciones y arreglos edilicios</span></div>
+        </div>
+        <div class="service-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h16M6 20V10l6-6 6 6v10M9 20v-5h6v5"/></svg></div>
+          <div><b>Limpieza de espacios comunes</b><span>Cocinas, comedores, salas y pasillos</span></div>
+        </div>
+      </div>
+      <p class="expensas-note">La expensa es un valor adicional al alquiler mensual de la habitación. Tanto el valor de la habitación como el de las expensas se actualizan cada 3 meses según el índice de IPC.</p>
+    </div>
+  </section>
+
+  <!-- CÓMO INGRESAR -->
+  <section class="section-navy" id="ingreso">
+    <div class="wrap">
+      <div class="head-row center" style="margin-inline:auto;">
+        <span class="eyebrow">Cómo ingresar</span>
+        <h2>Tres pasos, sin pedirte garante</h2>
+        <p>No solicitamos garantía: en su lugar, usamos pagarés que funcionan como respaldo del cumplimiento del contrato y que se te van devolviendo a medida que los vas abonando.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Contrato anual</h3>
+          <p>Se firma ante escribano público, con vigencia de un año.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Matrícula</h3>
+          <p>Es en concepto de devolución de la habitación al finalizar tu estadía.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Pagarés</h3>
+          <p>Uno por cada uno de los últimos 3 meses del año. Reemplazan la garantía y se devuelven a medida que se abonan.</p>
+        </div>
+      </div>
+      <div class="req-chips">
+        <span class="req-chip">Sin garante</span>
+        <span class="req-chip">18 a 25 años</span>
+        <span class="req-chip">Contrato anual</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONVIVENCIA -->
+  <section>
+    <div class="wrap">
+      <div class="convivencia">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 4.5-4 8-8 11z"/></svg>
+        </div>
+        <div>
+          <span class="eyebrow">Convivencia</span>
+          <h3>Normas de convivencia claras, para que todos estemos cómodos</h3>
+          <p>Prana tiene un reglamento de convivencia que ordena el uso de espacios comunes, horarios y responsabilidades compartidas entre pisos. Podés leerlo completo antes de reservar tu lugar.</p>
+        </div>
+        <a href="https://drive.google.com/file/d/1Nhjky8em1jxkyu9O4RXAk3-hi9YMxkJ4/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-left:auto;flex:none;">Leer el reglamento</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="section-alt" id="ubicacion">
+    <div class="wrap loc-grid">
+      <div>
+        <span class="eyebrow">Ubicación</span>
+        <h2>En pleno centro, cerca de todo lo que necesitás</h2>
+        <div class="loc-list">
+          <div class="loc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            <div><b>Santa Rosa 812, Córdoba</b><span>Nuestra dirección exacta</span></div>
+          </div>
+          <div class="loc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div><b>A 50 metros de Plaza Colón</b><span>Ideal para salir a caminar o desconectar</span></div>
+          </div>
+          <div class="loc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="14" rx="2"/><path d="M4 12h16M8 4v14M16 4v14"/><circle cx="7" cy="19.5" r="1"/><circle cx="17" cy="19.5" r="1"/></svg>
+            <div><b>A 100 metros de la parada de ómnibus</b><span>La línea que te lleva directo a Ciudad Universitaria</span></div>
+          </div>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Santa+Rosa+812+Cordoba" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:26px;">Ver en Google Maps</a>
+      </div>
+      <div class="map-card">
+        <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="320" height="320" rx="28" fill="var(--navy)"/>
+          <g stroke="rgba(255,255,255,0.14)" stroke-width="2">
+            <line x1="0" y1="80" x2="320" y2="80"/>
+            <line x1="0" y1="170" x2="320" y2="170"/>
+            <line x1="0" y1="250" x2="320" y2="250"/>
+            <line x1="90" y1="0" x2="90" y2="320"/>
+            <line x1="230" y1="0" x2="230" y2="320"/>
+          </g>
+          <circle cx="90" cy="170" r="34" fill="var(--purple-wash)" opacity=".9"/>
+          <text x="90" y="175" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" fill="var(--purple-strong)" font-weight="600">Plaza</text>
+          <text x="90" y="188" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" fill="var(--purple-strong)" font-weight="600">Colón</text>
+          <rect x="205" y="140" width="50" height="60" rx="8" fill="var(--yellow)"/>
+          <path d="M215 140v-14a15 15 0 0 1 30 0v14" fill="none" stroke="var(--yellow)" stroke-width="8"/>
+          <text x="230" y="175" text-anchor="middle" font-family="Children One, sans-serif" font-size="12" fill="#4A3800">prana</text>
+          <circle cx="150" cy="250" r="5" fill="#fff"/>
+          <text x="150" y="270" text-anchor="middle" font-family="Poppins, sans-serif" font-size="10.5" fill="#C9BFE6">Parada a Ciudad Universitaria</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap contact-grid">
+      <div class="contact-side">
+        <span class="eyebrow">Reservá tu lugar</span>
+        <h3>Contanos qué estás buscando y te respondemos por WhatsApp</h3>
+        <p>Completá el formulario o escribinos directamente. Te contamos disponibilidad, precios vigentes y te ayudamos a elegir la habitación ideal.</p>
+        <div class="contact-links">
+          <a class="contact-link" id="wa-direct" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+            +54 351 212 0783
+          </a>
+          <a class="contact-link" href="https://instagram.com/prana.resi" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            @prana.resi
+          </a>
+          <a class="contact-link" href="#ubicacion">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            Santa Rosa 812, Córdoba
+          </a>
+        </div>
+      </div>
+
+      <form class="card" id="resForm">
+        <div class="field">
+          <label for="f-name">Nombre y apellido</label>
+          <input id="f-name" type="text" placeholder="Tu nombre" required>
+        </div>
+        <div class="two-col">
+          <div class="field">
+            <label for="f-origin">¿De dónde nos escribís?</label>
+            <input id="f-origin" type="text" placeholder="Ciudad / país">
+          </div>
+          <div class="field">
+            <label for="f-room">Tipo de habitación</label>
+            <select id="f-room">
+              <option>Triple</option>
+              <option>Doble</option>
+              <option>Individual grande</option>
+              <option>Individual mediana</option>
+              <option>Individual chica</option>
+              <option>Todavía no sé</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-msg">Contanos algo más (opcional)</label>
+          <textarea id="f-msg" placeholder="Fecha en la que pensás mudarte, dudas, etc."></textarea>
+        </div>
+        <a href="#" target="_blank" rel="noopener" class="form-cta" id="wa-form">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+          Continuar por WhatsApp
+        </a>
+        <span class="form-hint">Te vamos a redirigir a WhatsApp con tu mensaje ya armado.</span>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">
+        <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="19" fill="var(--purple)"/>
+          <path d="M13 27C13 19 16 13 20 13C24 13 27 19 27 27" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M20 13C17.5 16 17.5 20 20 23C22.5 20 22.5 16 20 13Z" fill="var(--yellow)"/>
+        </svg>
+        prana
+      </div>
+      <p>Residencia universitaria mixta en Santa Rosa 812, Córdoba. 4 años recibiendo estudiantes de todo el país, Latinoamérica y Europa.</p>
+    </div>
+    <div>
+      <h4>Recorré la web</h4>
+      <ul>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#habitaciones">Habitaciones</a></li>
+        <li><a href="#espacios">Espacios comunes</a></li>
+        <li><a href="#ingreso">Cómo ingresar</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://instagram.com/prana.resi" target="_blank" rel="noopener">Instagram · @prana.resi</a></li>
+        <li><a id="wa-foot" href="#" target="_blank" rel="noopener">WhatsApp · +54 351 212 0783</a></li>
+        <li><a href="#ubicacion">Santa Rosa 812, Córdoba</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <span id="year"></span> Residencia Prana</span>
+    <span>Precios y expensas: a confirmar — consultanos por WhatsApp</span>
+  </div>
+</footer>
+
+<a id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.1 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+</a>
+
+<script>
+(function(){
+  try{
+    var menuBtn = document.getElementById('menuBtn');
+    var nav = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); });
+    });
+  }catch(e){}
+
+  var WA_NUMBER = '5493512120783';
+  function waLink(text){
+    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+
+  try{
+    document.getElementById('wa-hero').href = waLink('Hola Prana! Quiero reservar mi lugar en la residencia.');
+    document.getElementById('wa-direct').href = waLink('Hola Prana! Quiero más información sobre la residencia.');
+    document.getElementById('wa-float').href = waLink('Hola Prana! Quiero más información sobre la residencia.');
+    document.getElementById('wa-foot').href = waLink('Hola Prana! Quiero más información sobre la residencia.');
+  }catch(e){}
+
+  function buildFormMessage(){
+    var name = document.getElementById('f-name').value.trim();
+    var origin = document.getElementById('f-origin').value.trim();
+    var room = document.getElementById('f-room').value;
+    var msg = document.getElementById('f-msg').value.trim();
+    var lines = ['Hola Prana! Quiero reservar mi lugar.'];
+    if(name) lines.push('Nombre: ' + name);
+    if(origin) lines.push('Vengo de: ' + origin);
+    lines.push('Habitación de interés: ' + room);
+    if(msg) lines.push('Mensaje: ' + msg);
+    return lines.join('\n');
+  }
+
+  try{
+    var form = document.getElementById('resForm');
+    var waFormBtn = document.getElementById('wa-form');
+    function refresh(){ waFormBtn.href = waLink(buildFormMessage()); }
+    refresh();
+    form.addEventListener('input', refresh);
+    waFormBtn.addEventListener('click', function(e){
+      if(!document.getElementById('f-name').value.trim()){
+        e.preventDefault();
+        document.getElementById('f-name').focus();
+      }
+    });
+  }catch(e){}
+
+  try{ document.getElementById('year').textContent = new Date().getFullYear(); }catch(e){}
+})();
+</script>
