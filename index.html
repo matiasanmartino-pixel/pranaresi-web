@@ -108,7 +108,8 @@
   :root[data-theme="dark"] .brand, .brand{color:var(--navy);}
   @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .brand{color:var(--ink);} }
   :root[data-theme="dark"] .brand{color:var(--ink);}
-  .brand-mark{width:34px;height:34px;flex:none;}
+  .brand-mark{width:34px;height:34px;flex:none;border-radius:9px;object-fit:cover;display:block;}
+  .foot-mark{width:28px;height:28px;flex:none;border-radius:8px;object-fit:cover;display:block;}
   nav.links{display:flex;gap:26px;align-items:center;}
   nav.links a{
     font-family:var(--font-sub);font-size:14px;font-weight:500;color:var(--ink-soft);
@@ -264,15 +265,15 @@
   }
   .floors-card h3{font-size:1.3rem;}
   .floors-card > p{font-family:var(--font-sub);color:var(--ink-soft);font-size:14.5px;margin-top:8px;}
-  .floor-stack{display:flex;flex-direction:column-reverse;gap:6px;margin-top:22px;}
+  .floor-stack{display:flex;flex-direction:column;gap:6px;margin-top:22px;}
   .floor-row{
-    display:flex;align-items:center;gap:12px;background:var(--surface-2);
+    display:flex;align-items:flex-start;gap:12px;background:var(--surface-2);
     border-radius:10px;padding:9px 14px;font-family:var(--font-sub);font-size:13px;color:var(--ink-soft);
   }
-  .floor-row b{color:var(--navy);font-size:12.5px;width:66px;flex:none;}
+  .floor-row b{color:var(--navy);font-size:12.5px;width:84px;flex:none;padding-top:1px;}
   :root[data-theme="dark"] .floor-row b{color:var(--ink);}
   @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .floor-row b{color:var(--ink);} }
-  .floor-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);flex:none;}
+  .floor-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);flex:none;margin-top:6px;}
 
   /* ---------- Rooms ---------- */
   .room-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
@@ -283,7 +284,7 @@
     overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);
   }
   .room-media{aspect-ratio:4/3;width:100%;background:var(--purple-wash);position:relative;overflow:hidden;}
-  .room-media img{width:100%;height:100%;object-fit:cover;filter:brightness(1.05) saturate(1.05);}
+  .room-media img, .room-media video{width:100%;height:100%;object-fit:cover;filter:brightness(1.05) saturate(1.05);}
   .room-media.icon{display:flex;align-items:center;justify-content:center;}
   .room-media.icon svg{width:64%;height:64%;color:var(--purple-strong);}
   .room-tag{
@@ -481,12 +482,8 @@
 <header class="site">
   <div class="wrap nav-row" style="position:relative;">
     <a class="brand" href="#top" aria-label="Residencia Prana - inicio">
-      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="20" cy="20" r="19" fill="var(--purple)"/>
-        <path d="M13 27C13 19 16 13 20 13C24 13 27 19 27 27" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M20 13C17.5 16 17.5 20 20 23C22.5 20 22.5 16 20 13Z" fill="var(--yellow)"/>
-      </svg>
-      prana
+      <img class="brand-mark" src="assets/logo.jpg" alt="">
+      Prana
     </a>
     <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -511,7 +508,7 @@
       <div>
         <span class="eyebrow">Residencia universitaria · Córdoba Capital</span>
         <h1>Tu segunda casa mientras hacés <em>tu carrera</em> en Córdoba</h1>
-        <p class="lead">Somos Prana: una residencia mixta a metros de Plaza Colón, con habitaciones con baño propio y espacios comunes pensados para estudiar y para hacer amigos. En estos 4 años ya pasaron por Prana más de 200 estudiantes de todo el país, Latinoamérica y Europa.</p>
+        <p class="lead">Somos Prana: una residencia mixta a metros de Plaza Colón, con habitaciones con baño privado y espacios comunes pensados para estudiar y para hacer amigos. En estos 4 años ya pasaron por Prana más de 200 estudiantes de todo el país, Latinoamérica y Europa.</p>
         <div class="stat-chip-row">
           <span class="chip">4 años acompañando estudiantes</span>
           <span class="chip">Contrato anual</span>
@@ -527,7 +524,7 @@
         <div class="stats-strip">
           <div><div class="stat-num">4</div><div class="stat-label">Años en el rubro</div></div>
           <div><div class="stat-num">+200</div><div class="stat-label">Estudiantes ya pasaron por Prana</div></div>
-          <div><div class="stat-num">PB+5</div><div class="stat-label">Pisos con ascensor</div></div>
+          <div><div class="stat-num">SS+PB+5</div><div class="stat-label">Niveles con ascensor</div></div>
         </div>
       </div>
       <div class="hero-photo-wrap">
@@ -536,7 +533,7 @@
           <img src="assets/hero-building.jpg" alt="Fachada del edificio de Residencia Prana en Santa Rosa 812, Córdoba">
           <div class="hero-pin">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            A 50 m de Plaza Colón
+            A 100 m de Plaza Colón
           </div>
         </div>
       </div>
@@ -567,11 +564,11 @@
         <span class="eyebrow">Quiénes somos</span>
         <h2>Cuatro años construyendo una comunidad universitaria</h2>
         <p>Prana nació para que venir a estudiar a Córdoba no signifique empezar de cero: en estos 4 años ya pasaron por Prana más de 200 estudiantes de todas las provincias del país, de Latinoamérica y de Europa, con contrato anual y todo pensado para que rindas en la facultad sin descuidar tu vida diaria.</p>
-        <p>La residencia es mixta, distribuida en planta baja y 5 pisos con ascensor. Cada piso está sectorizado: hay pisos exclusivos para varones y pisos exclusivos para mujeres, así que convivís con tu grupo de piso mientras compartís los espacios comunes con el resto de la residencia. Pensada para estudiantes de 18 a 25 años.</p>
+        <p>La residencia es mixta, distribuida en subsuelo, planta baja y 5 pisos con ascensor. Cada piso de habitaciones está sectorizado, exclusivo para varones o para mujeres, y varios pisos suman su propia cocina, sala de estar o lavadero además de los espacios comunes generales. Pensada para estudiantes de 18 a 25 años.</p>
         <div class="fact-grid">
           <div class="fact">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
-            <div><strong>Planta baja + 5 pisos</strong><span>Con ascensor, pisos solo de varones o solo de mujeres</span></div>
+            <div><strong>Subsuelo, PB y 5 pisos</strong><span>Con ascensor, pisos de habitaciones solo de varones o solo de mujeres</span></div>
           </div>
           <div class="fact">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
@@ -583,7 +580,7 @@
           </div>
           <div class="fact">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
-            <div><strong>Santa Rosa 812</strong><span>A 50 m de Plaza Colón, a 100 m del colectivo a Ciudad Universitaria</span></div>
+            <div><strong>Santa Rosa 812</strong><span>A 100 m de Plaza Colón, a 10-15 min de Ciudad Universitaria</span></div>
           </div>
         </div>
       </div>
@@ -592,13 +589,14 @@
         <span class="eyebrow">De dónde son nuestros estudiantes</span>
         <h3 style="margin-top:8px;">Todo el país, Latinoamérica y Europa</h3>
         <p>Estudiantes de más de una decena de provincias argentinas conviven con compañeros llegados de otros países de Latinoamérica y de Europa: una residencia pensada para que hacer amigos sea parte de mudarte a Córdoba.</p>
-        <div class="floor-stack" aria-hidden="true">
-          <div class="floor-row"><b>Piso 5</b><span class="floor-dot"></span> Sector exclusivo</div>
-          <div class="floor-row"><b>Piso 4</b><span class="floor-dot"></span> Sector exclusivo</div>
-          <div class="floor-row"><b>Piso 3</b><span class="floor-dot"></span> Sector exclusivo</div>
-          <div class="floor-row"><b>Piso 2</b><span class="floor-dot"></span> Sector exclusivo</div>
-          <div class="floor-row"><b>Piso 1</b><span class="floor-dot"></span> Sector exclusivo</div>
-          <div class="floor-row"><b>Planta baja</b><span class="floor-dot"></span> Espacios comunes</div>
+        <div class="floor-stack">
+          <div class="floor-row"><b>Piso 5</b><span class="floor-dot"></span> Mujeres · Cocina comedor completo, lavadero y terraza</div>
+          <div class="floor-row"><b>Piso 4</b><span class="floor-dot"></span> Mujeres · Cocina</div>
+          <div class="floor-row"><b>Piso 3</b><span class="floor-dot"></span> Hombres</div>
+          <div class="floor-row"><b>Piso 2</b><span class="floor-dot"></span> Hombres · Cocina y comedor completo</div>
+          <div class="floor-row"><b>Piso 1</b><span class="floor-dot"></span> Mujeres · Sector de lavado y sala de estar</div>
+          <div class="floor-row"><b>Planta baja</b><span class="floor-dot"></span> Hombres · Sala de estar y cocina comedor</div>
+          <div class="floor-row"><b>Subsuelo</b><span class="floor-dot"></span> Sala de estudio</div>
         </div>
       </div>
     </div>
@@ -610,7 +608,7 @@
       <div class="head-row">
         <span class="eyebrow">Habitaciones</span>
         <h2>Un lugar a tu medida, cinco formas de elegirlo</h2>
-        <p>Todas las habitaciones tienen baño propio, cama con colchón y un estante para guardar tu ropa. Las duchas se comparten por piso. Cada ingresante trae su ropa blanca, plato, vaso y cubiertos.</p>
+        <p>Todas las habitaciones tienen baño privado, cama con colchón y placard. Las duchas se comparten por piso.</p>
       </div>
 
       <div class="room-grid">
@@ -619,8 +617,8 @@
           <div class="room-body">
             <h3>Triple</h3>
             <ul class="room-feats">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño privado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + placard</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Duchas compartidas por piso</li>
             </ul>
             <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
@@ -632,8 +630,8 @@
           <div class="room-body">
             <h3>Doble</h3>
             <ul class="room-feats">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño privado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + placard</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Duchas compartidas por piso</li>
             </ul>
             <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
@@ -648,8 +646,8 @@
           <div class="room-body">
             <h3>Individual grande</h3>
             <ul class="room-feats">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño privado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + placard</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>El mayor espacio individual</li>
             </ul>
             <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
@@ -657,15 +655,15 @@
         </div>
 
         <div class="room-card">
-          <div class="room-media icon">
+          <div class="room-media">
             <span class="room-tag">Individual</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="12" width="16" height="7" rx="1.4"/><path d="M6 12V9.5a1.8 1.8 0 0 1 1.8-1.8h4.4A1.8 1.8 0 0 1 14 9.5V12"/><path d="M4 19v2M20 19v2"/></svg>
+            <video src="assets/room-individual-mediana.mp4" muted loop playsinline autoplay preload="metadata"></video>
           </div>
           <div class="room-body">
             <h3>Individual mediana</h3>
             <ul class="room-feats">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño privado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + placard</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Equilibrio entre espacio y valor</li>
             </ul>
             <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
@@ -673,15 +671,15 @@
         </div>
 
         <div class="room-card">
-          <div class="room-media icon">
+          <div class="room-media">
             <span class="room-tag">Individual</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="6" y="12" width="12" height="7" rx="1.2"/><path d="M8 12v-2a1.6 1.6 0 0 1 1.6-1.6h2.8A1.6 1.6 0 0 1 14 10v2"/><path d="M6 19v2M18 19v2"/></svg>
+            <video src="assets/room-individual-chica.mp4" muted loop playsinline autoplay preload="metadata"></video>
           </div>
           <div class="room-body">
             <h3>Individual chica</h3>
             <ul class="room-feats">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño propio</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + estante</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Baño privado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Cama con colchón + placard</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Tu propio espacio, con lo esencial</li>
             </ul>
             <div class="room-price"><span>Precio</span><a href="#contacto">Consultanos →</a></div>
@@ -695,6 +693,11 @@
             <a href="#contacto" class="btn btn-primary" style="margin-top:6px;">Hablar con Prana</a>
           </div>
         </div>
+      </div>
+
+      <div class="room-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 9h16M9 4v16"/></svg>
+        Cada ingresante debe traer su propia ropa blanca (sábanas y toallas), además de plato, vaso y cubiertos.
       </div>
 
       <div class="room-note">
@@ -849,11 +852,11 @@
           </div>
           <div class="loc-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-            <div><b>A 50 metros de Plaza Colón</b><span>Ideal para salir a caminar o desconectar</span></div>
+            <div><b>A 100 metros de Plaza Colón</b><span>Ideal para salir a caminar o desconectar</span></div>
           </div>
           <div class="loc-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="14" rx="2"/><path d="M4 12h16M8 4v14M16 4v14"/><circle cx="7" cy="19.5" r="1"/><circle cx="17" cy="19.5" r="1"/></svg>
-            <div><b>A 100 metros de la parada de ómnibus</b><span>La línea que te lleva directo a Ciudad Universitaria</span></div>
+            <div><b>A 10-15 minutos de Ciudad Universitaria</b><span>En colectivo, desde la parada más cercana</span></div>
           </div>
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=Santa+Rosa+812+Cordoba" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:26px;">Ver en Google Maps</a>
@@ -873,9 +876,9 @@
           <text x="90" y="188" text-anchor="middle" font-family="Poppins, sans-serif" font-size="11" fill="var(--purple-strong)" font-weight="600">Colón</text>
           <rect x="205" y="140" width="50" height="60" rx="8" fill="var(--yellow)"/>
           <path d="M215 140v-14a15 15 0 0 1 30 0v14" fill="none" stroke="var(--yellow)" stroke-width="8"/>
-          <text x="230" y="175" text-anchor="middle" font-family="Children One, sans-serif" font-size="12" fill="#4A3800">prana</text>
+          <text x="230" y="175" text-anchor="middle" font-family="Children One, sans-serif" font-size="12" fill="#4A3800">Prana</text>
           <circle cx="150" cy="250" r="5" fill="#fff"/>
-          <text x="150" y="270" text-anchor="middle" font-family="Poppins, sans-serif" font-size="10.5" fill="#C9BFE6">Parada a Ciudad Universitaria</text>
+          <text x="150" y="270" text-anchor="middle" font-family="Poppins, sans-serif" font-size="10.5" fill="#C9BFE6">10-15 min a Ciudad Universitaria</text>
         </svg>
       </div>
     </div>
@@ -945,12 +948,8 @@
   <div class="wrap foot-grid">
     <div>
       <div class="foot-brand">
-        <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="20" cy="20" r="19" fill="var(--purple)"/>
-          <path d="M13 27C13 19 16 13 20 13C24 13 27 19 27 27" stroke="var(--navy)" stroke-width="2.4" stroke-linecap="round"/>
-          <path d="M20 13C17.5 16 17.5 20 20 23C22.5 20 22.5 16 20 13Z" fill="var(--yellow)"/>
-        </svg>
-        prana
+        <img class="foot-mark" src="assets/logo.jpg" alt="">
+        Prana
       </div>
       <p>Residencia universitaria mixta en Santa Rosa 812, Córdoba. 4 años recibiendo estudiantes de todo el país, Latinoamérica y Europa.</p>
     </div>
