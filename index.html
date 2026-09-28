@@ -431,8 +431,19 @@
   .map-card{
     background:var(--navy);border-radius:var(--radius-lg);padding:34px;position:relative;overflow:hidden;
     aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);
+    cursor:pointer;
   }
+  .map-card:hover{transform:translateY(-2px);box-shadow:0 24px 48px -20px rgba(41,35,84,0.45);}
+  .map-card:focus-visible{outline:3px solid var(--purple);outline-offset:3px;}
   .map-card svg{width:100%;height:100%;}
+  .map-hint{
+    position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;
+    background:rgba(255,255,255,.95);color:var(--navy);
+    font-family:var(--font-sub);font-weight:600;font-size:12.5px;
+    padding:9px 16px;border-radius:999px;display:flex;align-items:center;gap:6px;
+    box-shadow:0 10px 22px -10px rgba(0,0,0,.4);white-space:nowrap;
+  }
+  .map-hint svg{width:14px;height:14px;flex:none;}
 
   /* ---------- Contact ---------- */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
@@ -512,10 +523,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <nav class="links" id="navLinks">
-      <a href="#nosotros">Nosotros</a>
       <a href="#video">Prana por dentro</a>
       <a href="#habitaciones">Habitaciones</a>
       <a href="#espacios">Espacios</a>
+      <a href="#nosotros">Nosotros</a>
       <a href="#beneficios">Beneficios</a>
       <a href="#ingreso">Ingreso</a>
       <a href="#ubicacion">Ubicación</a>
@@ -564,52 +575,6 @@
     </div>
   </section>
 
-  <!-- NOSOTROS -->
-  <section id="nosotros">
-    <div class="wrap about-grid">
-      <div class="about-copy">
-        <span class="eyebrow">Quiénes somos</span>
-        <h2>Cuatro años construyendo una comunidad universitaria</h2>
-        <p>Creemos que vivir bien también es sentirse contenido, tranquilo y acompañado. Por eso en Prana cuidamos cada detalle, desde los espacios hasta el ambiente que se genera día a día: nuestro objetivo es ofrecer mucho más que un lugar donde vivir, un espacio que facilite la adaptación, fomente la convivencia y acompañe el crecimiento personal y académico de cada residente.</p>
-        <p>Prana nació para que venir a estudiar a Córdoba no signifique empezar de cero: en estos 4 años ya pasaron por Prana más de 200 estudiantes de todas las provincias del país, de Latinoamérica y de Europa, con contrato anual y todo pensado para que rindas en la facultad sin descuidar tu vida diaria.</p>
-        <p>La residencia es mixta, distribuida en subsuelo, planta baja y 5 pisos con ascensor. Cada piso de habitaciones está sectorizado, exclusivo para varones o para mujeres, y varios pisos suman su propia cocina, sala de estar o lavadero además de los espacios comunes generales. Pensada para estudiantes de 18 a 25 años.</p>
-        <div class="fact-grid">
-          <div class="fact">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
-            <div><strong>Subsuelo, PB y 5 pisos</strong><span>Con ascensor, pisos de habitaciones solo de varones o solo de mujeres</span></div>
-          </div>
-          <div class="fact">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            <div><strong>18 a 25 años</strong><span>Comunidad de pares en el mismo momento de vida</span></div>
-          </div>
-          <div class="fact">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v-1M16 4v-1"/></svg>
-            <div><strong>Contrato anual</strong><span>Firmado ante escribano, precio se actualiza cada 3 meses</span></div>
-          </div>
-          <div class="fact">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
-            <div><strong>Santa Rosa 812</strong><span>A 100 m de Plaza Colón, a 10-15 min de Ciudad Universitaria</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="floors-card">
-        <span class="eyebrow">De dónde son nuestros estudiantes</span>
-        <h3 style="margin-top:8px;">Todo el país, Latinoamérica y Europa</h3>
-        <p>Estudiantes de más de una decena de provincias argentinas conviven con compañeros llegados de otros países de Latinoamérica y de Europa: una residencia pensada para que hacer amigos sea parte de mudarte a Córdoba.</p>
-        <div class="floor-stack">
-          <div class="floor-row"><b>Piso 5</b><span class="floor-dot"></span> Mujeres · Cocina comedor completo, lavadero y terraza</div>
-          <div class="floor-row"><b>Piso 4</b><span class="floor-dot"></span> Mujeres · Cocina</div>
-          <div class="floor-row"><b>Piso 3</b><span class="floor-dot"></span> Hombres</div>
-          <div class="floor-row"><b>Piso 2</b><span class="floor-dot"></span> Hombres · Cocina y comedor completo</div>
-          <div class="floor-row"><b>Piso 1</b><span class="floor-dot"></span> Mujeres · Sector de lavado y sala de estar</div>
-          <div class="floor-row"><b>Planta baja</b><span class="floor-dot"></span> Hombres · Sala de estar y cocina comedor</div>
-          <div class="floor-row"><b>Subsuelo</b><span class="floor-dot"></span> Sala de estudio</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- VIDEO -->
   <section class="section-navy" id="video">
     <div class="wrap">
@@ -619,7 +584,7 @@
         <p>Un recorrido real por las habitaciones y los espacios comunes, filmado en el edificio de Santa Rosa 812.</p>
       </div>
       <div class="video-shell">
-        <video controls preload="metadata" poster="assets/lounge.jpg">
+        <video autoplay muted loop playsinline controls preload="auto" poster="assets/lounge.jpg">
           <source src="assets/residencia-video.mp4" type="video/mp4">
           Tu navegador no puede reproducir este video.
         </video>
@@ -776,6 +741,52 @@
     </div>
   </section>
 
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow">Quiénes somos</span>
+        <h2>Cuatro años construyendo una comunidad universitaria</h2>
+        <p>Creemos que vivir bien también es sentirse contenido, tranquilo y acompañado. Por eso en Prana cuidamos cada detalle, desde los espacios hasta el ambiente que se genera día a día: nuestro objetivo es ofrecer mucho más que un lugar donde vivir, un espacio que facilite la adaptación, fomente la convivencia y acompañe el crecimiento personal y académico de cada residente.</p>
+        <p>Prana nació para que venir a estudiar a Córdoba no signifique empezar de cero: en estos 4 años ya pasaron por Prana más de 200 estudiantes de todas las provincias del país, de Latinoamérica y de Europa, con contrato anual y todo pensado para que rindas en la facultad sin descuidar tu vida diaria.</p>
+        <p>La residencia es mixta, distribuida en subsuelo, planta baja y 5 pisos con ascensor. Cada piso de habitaciones está sectorizado, exclusivo para varones o para mujeres, y varios pisos suman su propia cocina, sala de estar o lavadero además de los espacios comunes generales. Pensada para estudiantes de 18 a 25 años.</p>
+        <div class="fact-grid">
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+            <div><strong>Subsuelo, PB y 5 pisos</strong><span>Con ascensor, pisos de habitaciones solo de varones o solo de mujeres</span></div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <div><strong>18 a 25 años</strong><span>Comunidad de pares en el mismo momento de vida</span></div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v-1M16 4v-1"/></svg>
+            <div><strong>Contrato anual</strong><span>Firmado ante escribano, precio se actualiza cada 3 meses</span></div>
+          </div>
+          <div class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            <div><strong>Santa Rosa 812</strong><span>A 100 m de Plaza Colón, a 10-15 min de Ciudad Universitaria</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="floors-card">
+        <span class="eyebrow">De dónde son nuestros estudiantes</span>
+        <h3 style="margin-top:8px;">Todo el país, Latinoamérica y Europa</h3>
+        <p>Estudiantes de más de una decena de provincias argentinas conviven con compañeros llegados de otros países de Latinoamérica y de Europa: una residencia pensada para que hacer amigos sea parte de mudarte a Córdoba.</p>
+        <div class="floor-stack">
+          <div class="floor-row"><b>Piso 5</b><span class="floor-dot"></span> Mujeres · Cocina comedor completo, lavadero y terraza</div>
+          <div class="floor-row"><b>Piso 4</b><span class="floor-dot"></span> Mujeres · Cocina</div>
+          <div class="floor-row"><b>Piso 3</b><span class="floor-dot"></span> Hombres</div>
+          <div class="floor-row"><b>Piso 2</b><span class="floor-dot"></span> Hombres · Cocina y comedor completo</div>
+          <div class="floor-row"><b>Piso 1</b><span class="floor-dot"></span> Mujeres · Sector de lavado y sala de estar</div>
+          <div class="floor-row"><b>Planta baja</b><span class="floor-dot"></span> Hombres · Sala de estar y cocina comedor</div>
+          <div class="floor-row"><b>Subsuelo</b><span class="floor-dot"></span> Sala de estudio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICIOS / EXPENSAS -->
   <section class="section-alt" id="servicios">
     <div class="wrap">
@@ -918,9 +929,8 @@
             <div><b>A 10-15 minutos de Ciudad Universitaria</b><span>En colectivo, desde la parada más cercana</span></div>
           </div>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=Santa+Rosa+812+Cordoba" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:26px;">Ver en Google Maps</a>
       </div>
-      <div class="map-card">
+      <a class="map-card" href="https://www.google.com/maps/search/?api=1&query=Santa+Rosa+812+Cordoba" target="_blank" rel="noopener" aria-label="Ver la ubicación de Residencia Prana en Google Maps">
         <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect width="320" height="320" rx="28" fill="var(--navy)"/>
           <g stroke="rgba(255,255,255,0.14)" stroke-width="2">
@@ -939,7 +949,11 @@
           <circle cx="150" cy="250" r="5" fill="#fff"/>
           <text x="150" y="270" text-anchor="middle" font-family="Poppins, sans-serif" font-size="10.5" fill="#C9BFE6">10-15 min a Ciudad Universitaria</text>
         </svg>
-      </div>
+        <span class="map-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          Ver en Google Maps
+        </span>
+      </a>
     </div>
   </section>
 
