@@ -1,0 +1,14 @@
+{
+  "name": "Residencia Prana",
+  "short_name": "Prana",
+  "description": "Residencia universitaria en el centro de Córdoba.",
+  "lang": "es-AR",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#292354",
+  "background_color": "#FBF8FF",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

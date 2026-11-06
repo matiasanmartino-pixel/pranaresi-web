@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://delicate-zabaione-0e9af4.netlify.app/sitemap.xml
